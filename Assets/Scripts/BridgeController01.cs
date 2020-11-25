@@ -13,7 +13,7 @@ public class BridgeController01 : MonoBehaviour
     bool bridgeTurn;
 
     int totalCoin;
-    int coinCount;
+    int coinCount = 0;
 
     float timeRemaining = 5f;
     // Start is called before the first frame update
