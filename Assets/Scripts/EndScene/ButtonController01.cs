@@ -22,4 +22,8 @@ public class ButtonController01 : MonoBehaviour
         SceneManager.LoadScene("StartScreen");
     }
 
+    public void StartGame()
+    {
+        SceneManager.LoadScene("GameScreen");
+    }
 }

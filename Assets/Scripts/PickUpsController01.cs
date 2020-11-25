@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera01Controller : MonoBehaviour
+public class PickUpsController01 : MonoBehaviour
 {
-    public GameObject playerFollow;
-    Vector3 posOffset = new Vector3(0, 3, -3f);
-
+    public float spinSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +14,6 @@ public class Camera01Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, playerFollow.transform.position + posOffset, 0.1f);
+        transform.Rotate(new Vector3(spinSpeed * Time.deltaTime, 0, 0));
     }
 }
