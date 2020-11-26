@@ -23,6 +23,8 @@ public class MovingPlatformController01 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if(hasCollided == true)
         {
             if (isBck && !isFwd)
@@ -58,6 +60,7 @@ public class MovingPlatformController01 : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             hasCollided = true;
+
         }
         
     }
