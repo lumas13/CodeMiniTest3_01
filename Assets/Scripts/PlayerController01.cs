@@ -6,17 +6,24 @@ using UnityEngine.SceneManagement;
 public class PlayerController01 : MonoBehaviour
 {
     public Animator playerAni;
-
-    float playerSpeed = 4f;
+    public Renderer rendered1;
+    public Renderer rendered2;
+    public Renderer rendered3;
+    public Renderer rendered4;
+    public Material[] playerMats;
+    public Rigidbody playerRB;
+    
     int coinCount;
+    float playerSpeed = 4f;
     float fallGameOver = -2f;
+   
+    bool isOnGround = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -58,9 +65,33 @@ public class PlayerController01 : MonoBehaviour
             playerAni.SetBool("isRunning", false);
         }
 
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        {
+            playerRB.AddForce(Vector3.up * 5, ForceMode.Impulse);
+            isOnGround = false;
+            rendered1.material.color = playerMats[0].color;
+            rendered2.material.color = playerMats[0].color;
+            rendered3.material.color = playerMats[0].color;
+            rendered4.material.color = playerMats[0].color;
+
+            playerAni.SetTrigger("Jumped");
+        }
+
         if (transform.position.y < fallGameOver)
         {
             SceneManager.LoadScene("EndScreen");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+            rendered1.material.color = playerMats[1].color;
+            rendered2.material.color = playerMats[1].color;
+            rendered3.material.color = playerMats[1].color;
+            rendered4.material.color = playerMats[1].color;
         }
     }
 
